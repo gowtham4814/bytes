@@ -1,0 +1,72 @@
+<%= form_with model: chat , url:update_chat_path(user, user_chat), local: false do |form| %>
+  <% if chat.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(chat.errors.count, "error") %> prohibited this chat from being saved:</h2>
+
+      <ul>
+        <% chat.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% link_to 'cancel', show_chat_path(user) %>
+  <div class="chat">
+    <div class="field">
+      <%= form.text_field :message, class: "text", autocomplete: "off", required: true %>
+    </div>
+
+    <%= link_to 'cancel', show_chat_path(user), class:"cancel" %>
+    <div class="actions">
+      <%= form.submit value:"send", class:"submit" %>
+    </div></div>
+<% end %>
+<style>
+
+
+    .chat{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .text {
+        width: 50vw;
+        padding: 1.11vh;
+        border-bottom-left-radius: 25px;
+        border-top-left-radius: 25px;
+        outline: none;
+        border: none;
+        box-shadow: 3px 1px 5px black;
+        padding-left: 20px;
+        font-family: cursive;
+    }
+
+    .submit {
+        padding: 9.6px;
+        width: 10vw;
+        background: #7284e1;
+        border-bottom-right-radius: 25px;
+        border-top-right-radius: 25px;
+        border: none;
+        box-shadow: 2px 1px 5px black;
+    }
+
+    .cancel {
+        padding-top: 9.0px;
+        padding-left: 9.0px;
+        padding-right: 9.0px;
+        padding-bottom: 8.7px;
+        width: 7vw;
+        background: #f16e62;
+        border: none;
+        box-shadow: 2px 1px 5px black;
+        margin-top: -10px;
+        text-align: center;
+        color: black !important;
+    }
+    .cancel:hover{
+        background: #aab3b6;
+    }
+
+</style>

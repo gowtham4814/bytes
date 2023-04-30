@@ -1,0 +1,75 @@
+ <div class="forward">
+  <h3>FORWARDED TO</h3>
+  <%= form_with model: @user, url: forward_associate_path(@chat) do |form| %><div class="over-all">
+  <% @users.each do |user| %>
+    <div class="text">
+    <%= form.check_box :user_ids, { multiple: true }, user.id %>
+    <%= form.label :user_ids, user.email %><br>
+    </div>
+  <% end %></div>
+<div style="display: flex">
+  <%= form.submit "share" %>
+    <%= link_to 'cancel', show_chat_path(@return.id), class:"clear" %>
+<% end %></div></div>
+<style>
+  .text{
+      display: flex;
+      padding: 5%;
+
+  }
+  .forward h3{
+      text-align: center;
+      padding: 5%;
+  }
+  .over-all{
+      height: 25vh;
+      overflow-y: scroll;
+      width: 20vw;
+  }
+  .over-all::-webkit-scrollbar-track {
+      background: #f1f1f1;
+  }
+  .over-all::-webkit-scrollbar {
+      width: 6px;
+  }
+  .over-all::-webkit-scrollbar-thumb {
+      background: #1976cf;
+      border-radius: 16px;
+  }
+
+  .over-all::-webkit-scrollbar-thumb:hover {
+      background: #046cd2;
+  }
+  .forward{
+      margin-left: 40vw;
+      margin-top: 25vh;
+      background: whitesmoke;
+      box-shadow: 2px 2px 0.7pc black;
+      width: 21vw;
+      height:100%;
+      padding-bottom: 5vh;
+        }
+  .forward input[type="submit"]{
+      text-align: center;
+      margin-left: 7vw;
+      background: #1976cf;
+      color: white !important;
+      padding: 7px;
+      border: none;
+      outline: none;
+      margin-top: 5vh;
+       }
+  .clear{
+      text-align: center;
+      margin-left: 1vw;
+      background: #1976cf;
+      color: white !important;
+      padding: 7px;
+      border: none;
+      outline: none;
+      margin-top: 5vh;
+  }
+  .clear:hover{
+      background: #1976ce;
+  }
+</style>

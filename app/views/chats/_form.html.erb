@@ -1,0 +1,52 @@
+<%= form_with model: chat , url:create_chat_path(user), local: false do |form| %>
+  <% if chat.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(chat.errors.count, "error") %> prohibited this chat from being saved:</h2>
+
+      <ul>
+        <% chat.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="chat">
+  <div class="field">
+    <%= form.text_field :message, class: "text", autocomplete: "off", required: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit value:"send", class:"submit" %>
+  </div></div>
+<% end %>
+<style>
+
+
+    .chat{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+  .text{
+      width: 50vw;
+      padding: 1.11vh;
+      border-bottom-left-radius: 25px;
+      border-top-left-radius: 25px;
+      outline: none;
+      border: none;
+      box-shadow: -1px 1px 5px black;
+      padding-left: 20px;
+      font-family: cursive;
+  }
+
+  .submit{
+      padding: 9.6px;
+      width:10vw;
+      background: #7284e1;
+      border-bottom-right-radius: 25px;
+      border-top-right-radius: 25px;
+      border: none;
+      box-shadow: 2px 1px 5px black;
+  }
+</style>

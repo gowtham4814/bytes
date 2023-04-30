@@ -1,0 +1,176 @@
+<div class="search">
+
+  <h1>Chats</h1>
+  <div class="signout">
+  <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+</div>
+  <%= form_tag(chats_path, method: "get") do %>
+  <%= text_field_tag(:search, params[:search], placeholder: "Search with email", required: :true) %>
+  <%= submit_tag("Search") %><%= link_to 'Clear', chats_path, class:"clear" %>
+<% end %>
+</div>
+
+<% if @search_users.present? || params[:search] %>
+<div class="chat">
+  <p><b>SEARCH RESULTS:</b></p><br>
+  <% if @search_users.present? %>
+    <% @search_users.each_with_index do |search, index| %>
+      <div class="content">
+        Email: <b><%= search.email %></b><br>
+        Name: <b><%= search.name %></b><br>
+        SENT: <b><%= @send[index] %></b><br>
+        RECEIVED: <b><%= @receive[index] %></b><br><br>
+        <%= link_to 'CHAT', show_chat_path(search.id), class: "link" %><br><br>
+        <hr>
+      </div>
+    <% end %>
+  <% else %>
+      NO RESULT
+  <% end %>
+</div>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+<div class="table">
+<table>
+  <thead>
+    <tr>
+      <th>All Users</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+  <% if user.id != current_user.id %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= link_to 'CHAT', show_chat_path(user) %></td>
+      </tr>
+  <% end %>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+<style>
+
+  .search{
+      margin-top: -20px;
+      padding: 20px;
+      text-align: center;
+      background: #1976d0;
+  }
+  .search input[type="text"] {
+      padding: 5px;
+      border-radius: 50px;
+      border: none;
+      outline: none;
+      padding-left: 10px;
+  }
+  .search input[type="submit"] {
+      padding: 5px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+   }
+ .search .clear{
+     padding: 5px;
+     padding-bottom: 7px;
+     border-radius: 5px;
+     border: none;
+     outline: none;
+     margin-left: 5px;
+     background: #efefef;
+     color: black
+ }
+ .search .clear:hover{
+     color: #ffffff;
+     background: transparent;
+ }
+  .search input[type="submit"]:hover{
+      color: #ffffff;
+      background: transparent;
+  }
+  .chat{
+      width: 94vw;
+      margin-top: 5vh;
+      height: 25vh;
+      overflow-y: scroll;
+      padding: 20px;
+  }
+  .chat::-webkit-scrollbar-track {
+      background: #f1f1f1;
+  }
+  .chat::-webkit-scrollbar {
+    width: 10px;
+  }
+  .chat::-webkit-scrollbar-thumb {
+      background: #1976cf;
+      border-radius: 16px;
+  }
+
+  .chat::-webkit-scrollbar-thumb:hover {
+      background: #046cd2;
+  }
+  .chat hr{
+      background: #b50dff;
+      height: 0.1vh;
+      border-radius: 20px;
+  }
+  .chat p{
+      text-align: center;
+  }
+  .link{
+      background: #1976cf;
+      color: white !important;
+      padding: 7px;
+      text-align: center;
+      margin-left: 26vw;
+  }
+  .link:hover{
+      background: transparent;
+      border: 1px solid #1976cf;
+      color: #1976ce !important;
+  }
+  .table table{
+      width: 100%;
+      padding: 10px;
+  }
+  .table{
+      width: 77vw;
+      margin-left: 10vw;
+      margin-top: 5vh;
+      box-shadow: 2px 2px 0.7pc black;
+  }
+  .table td{
+
+      padding: 10px;
+      width: 100vw;
+  }
+  .table a{
+      background: #1976cf;
+      color: white !important;
+      padding: 7px;
+      text-align: center;
+      margin-left: 26vw;
+  }
+  .table a:hover{
+      background: transparent;
+      border: 1px solid #1976cf;
+      color: #1976ce !important;
+  }
+  .signout{
+      color: #efefef;
+      float: right;
+  }
+  .signout a:hover{
+      color: #fff;
+      padding: 1vh;
+      border-radius: 50px;
+      background: #7283e0;
+      box-shadow: 1px 1px 0.1pc black;
+  }
+</style>
+
+
