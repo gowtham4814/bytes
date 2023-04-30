@@ -9,8 +9,8 @@ class User < ApplicationRecord
   has_many :received_chats, through: :received_user_chats, source: :chat
 
   scope :search_by_email, -> (email, current_user) {
-    where("SUBSTR(email, 1, INSTR(email, '@') - 1) LIKE ?", "%#{email}%")
+    where("SUBSTRING(email, 1, POSITION('@' IN email) - 1) LIKE ?", "%#{email}%")
       .where.not(id: current_user)
   }
-
+  
 end
