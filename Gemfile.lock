@@ -91,7 +91,7 @@ GEM
     ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
-    i18n (1.12.0)
+    i18n (1.13.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
@@ -126,14 +126,12 @@ GEM
     nio4r (2.5.9)
     nokogiri (1.14.3-x64-mingw-ucrt)
       racc (~> 1.4)
-    nokogiri (1.14.3-x86_64-linux)
-      racc (~> 1.4)
     orm_adapter (0.5.0)
     public_suffix (5.0.1)
     puma (5.6.5)
       nio4r (~> 2.0)
     racc (1.6.2)
-    rack (2.2.6.4)
+    rack (2.2.7)
     rack-mini-profiler (2.3.4)
       rack (>= 1.2.0)
     rack-proxy (0.7.6)
@@ -213,7 +211,6 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     sqlite3 (1.6.2-x64-mingw-ucrt)
-    sqlite3 (1.6.2-x86_64-linux)
     thor (1.2.1)
     tilt (2.1.0)
     timeout (0.3.2)
@@ -246,11 +243,10 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.7)
+    zeitwerk (2.6.8)
 
 PLATFORMS
   x64-mingw-ucrt
-  x86_64-linux
 
 DEPENDENCIES
   bootsnap (>= 1.4.4)
